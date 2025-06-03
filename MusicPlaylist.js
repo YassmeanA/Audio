@@ -1,4 +1,3 @@
-
 const Icons = document.querySelectorAll(".icons .icon");
 const Pages = document.querySelectorAll(".page");
 const Container = document.querySelector(".sections");
@@ -319,13 +318,13 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
   TBPause.style.display = "none";
 
   document.querySelector(".progress").style.transition = "none";
-  document.querySelector(".progress").style.strokeDashoffset = "100";
+  document.querySelector(".progress").style.strokeDashoffset = "85";
 
   Audio.addEventListener("timeupdate", () => {
     if (!Audio.duration) return;
 
     document.querySelector(".progress").style.transition = "0.3s linear";
-    document.querySelector(".progress").style.strokeDashoffset = `${100 * ((Audio.duration - Audio.currentTime) / Audio.duration)}`;
+    document.querySelector(".progress").style.strokeDashoffset = `${85 * ((Audio.duration - Audio.currentTime) / Audio.duration)}`;
 
     Progress.value = Audio.currentTime / Audio.duration;
     calcValue();
