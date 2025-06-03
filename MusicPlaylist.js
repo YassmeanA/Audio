@@ -301,18 +301,26 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
 
   document.querySelector(".ActiveItem").style.bottom = "1px";
   activateText(index);
-  
-  Audio.pause();
-  Audio.src = audios[index];
-  Audio.addEventListener("loadedmetadata", () => {
-  // Set the currentTime only when metadata is loaded
-  Audio.currentTime = Xs[index];
+
+  Audio.pause(); // Stop any current playback
+Audio.src = audios[index]; // Set new source
+
+// Remove previous event listener if necessary to avoid stacking
+Audio.onloadedmetadata = () => {
+  Audio.currentTime = Xs[index]; // Set the correct start time
   Progress.value = Audio.currentTime / Audio.duration;
   calcValue();
-  });
 
-  Audio.play();
- 
+  // Now that metadata is loaded, attempt to play
+  const playPromise = Audio.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.error('Playback error:', error);
+    });
+  }
+};
+
+  
   Play.style.display = "flex";
   Pause.style.display = "none";
   TBPlay.style.display = "flex";
