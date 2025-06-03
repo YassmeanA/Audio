@@ -303,33 +303,22 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
   activateText(index);
 
 
-  Audio.pause(); // Stop current playback
+  Audio.pause(); // Stop any current playback
+Audio.src = audios[index]; // Set new source
 
-// Optional: Detach existing loadedmetadata to avoid stacking
-Audio.onloadedmetadata = null;
-
-Audio.src = audios[index];
-
-// Hint to browser to preload metadata and possibly some content
-Audio.preload = "auto"; // or "metadata" if you don't want full audio loading yet
-
+// Remove previous event listener if necessary to avoid stacking
 Audio.onloadedmetadata = () => {
-  Audio.currentTime = Xs[index] || 0;
+  Audio.currentTime = Xs[index]; // Set the correct start time
+  Progress.value = Audio.currentTime / Audio.duration;
+  calcValue();
 
-  // Wait for enough data to play
-  Audio.oncanplay = () => {
-    Progress.value = Audio.currentTime / Audio.duration;
-    calcValue();
-
-    const playPromise = Audio.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(err => {
-        console.error("Playback failed:", err);
-      });
-    }
-
-    Audio.oncanplay = null; // Cleanup
-  };
+  // Now that metadata is loaded, attempt to play
+  const playPromise = Audio.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.error('Playback error:', error);
+    });
+  }
 };
 
   
