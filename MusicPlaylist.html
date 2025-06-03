@@ -556,15 +556,6 @@ left:-100vw;}
 .Settings.active {
 left:0;}
 
-.Settings .content {
-position:absolute;
-width:100%;
-top:0;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;}
-
 .Controls {
 position:fixed;
 width:100vw;
@@ -595,10 +586,9 @@ pointer-events:auto;}
 .Controls.active {
 top:0;}
 
-.Controls .content {
+.Settings .content, .Controls .content {
 position:absolute;
 width:100vw;
-top:0;
 overflow:hidden;
 display:flex;
 align-items:center;
@@ -1224,6 +1214,7 @@ position:absolute;
 bottom:80px;}
 
 .Settings .content, .Controls .content {
+top:0;
 height:670px;}
 
 #BottomNavbar, .delete-section {
@@ -1252,6 +1243,7 @@ position:fixed;
 bottom:80px;}
 
 .Settings .content, .Controls .content {
+bottom:0;
 height:100vh;}
 
 #BottomNavbar, .delete-section {
