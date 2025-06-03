@@ -78,19 +78,6 @@ alertTimeout = setTimeout(() => {Alert.classList.remove("active");},1000);
 
 }
 
-Favourite.addEventListener("click", () => {
-  if (Favourite.classList.contains("active")) {
-    Favourite.classList.remove("active");
-    Alert.innerHTML = "تمت الإزالة من المفضلة";
-  } else {
-    Favourite.classList.add("active");
-    Alert.innerHTML = "تمت الإضافة للمفضلة";
-  }
-
-activateAlert();
-
-});
-
 // Play Options (Play - Autoplay - Replay - Random)
 pms.forEach((pm, index) => {
   pm.addEventListener("click", () => {
@@ -332,13 +319,13 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
   TBPause.style.display = "none";
 
   document.querySelector(".progress").style.transition = "none";
-  document.querySelector(".progress").style.strokeDashoffset = "88";
+  document.querySelector(".progress").style.strokeDashoffset = "90";
 
   Audio.addEventListener("timeupdate", () => {
     if (!Audio.duration) return;
 
     document.querySelector(".progress").style.transition = "0.3s linear";
-    document.querySelector(".progress").style.strokeDashoffset = `${88 * ((Audio.duration - Audio.currentTime) / Audio.duration)}`;
+    document.querySelector(".progress").style.strokeDashoffset = `${90 * ((Audio.duration - Audio.currentTime) / Audio.duration)}`;
 
     Progress.value = Audio.currentTime / Audio.duration;
     calcValue();
