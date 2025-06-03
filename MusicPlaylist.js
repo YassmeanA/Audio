@@ -301,7 +301,8 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
 
   document.querySelector(".ActiveItem").style.bottom = "1px";
   activateText(index);
-
+  
+  Audio.pause();
   Audio.src = audios[index];
   Audio.addEventListener("loadedmetadata", () => {
   // Set the currentTime only when metadata is loaded
