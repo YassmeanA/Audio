@@ -541,10 +541,8 @@ font-weight:600;
 text-shadow:0 1px 3px rgba(0,0,0,0.1);}
 
 .Settings {
-position:fixed;
 top:0;
 width:100vw;
-height:100vh;
 z-index:2;
 overflow-x:hidden;
 overflow-y:auto;
@@ -558,9 +556,7 @@ left:-100vw;}
 left:0;}
 
 .Controls {
-position:fixed;
 width:100vw;
-height:100vh;
 top:100vh;
 background:#430575;
 z-index:2;
@@ -591,6 +587,7 @@ top:0;}
 position:absolute;
 top:0;
 width:100vw;
+height:100%;
 overflow:hidden;
 display:flex;
 align-items:center;
@@ -1205,7 +1202,7 @@ justify-content:center;}
 .Body {
 overflow-y:auto;}
 
-.page {
+.page, .Settings, .Controls {
 position:absolute;
 height:670px;}
 
@@ -1215,9 +1212,6 @@ position:absolute;}
 .Add {
 position:absolute;
 bottom:80px;}
-
-.Settings .content, .Controls .content {
-height:670px;}
 
 #BottomNavbar, .delete-section {
 position:absolute;
@@ -1233,7 +1227,7 @@ top:600px;}
 .Body {
 overflow-y:hidden;}
 
-.page {
+.page, .Settings, .Controls {
 position:fixed;
 height:100vh;}
 
@@ -1243,9 +1237,6 @@ position:fixed;}
 .Add {
 position:fixed;
 bottom:80px;}
-
-.Settings .content, .Controls .content {
-height:100vh;}
 
 #BottomNavbar, .delete-section {
 position:fixed;
@@ -1788,7 +1779,7 @@ column-gap:210px;}
 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M16 20.8H19.6C20.8 20.8 21.4 21.4 21.4 22.6V26.2C21.4 27.4 20.8 28 19.6 28H17.8C16.6 28 16 27.4 16 26.2V19C16 16.6131 16.9482 14.3239 18.636 12.636C20.3239 10.9482 22.6131 10 25 10C27.3869 10 29.6761 10.9482 31.364 12.636C33.0518 14.3239 34 16.6131 34 19V26.2C34 27.4 33.4 28 32.2 28H30.4C29.2 28 28.6 27.4 28.6 26.2V22.6C28.6 21.4 29.2 20.8 30.4 20.8H34" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
-<span>مكتبتي</span>
+<span id="M">مكتبتي</span>
 </li>
 
 <li class="icon">
