@@ -954,7 +954,7 @@ document.querySelector("#confirm-Delete").addEventListener("click", () => {
 
   load();
   document.querySelector("#DeleteDialog").classList.remove("active");
-
+M.innerHTML = currentIndex;
 });
 
 let SlideIndex = 1;
