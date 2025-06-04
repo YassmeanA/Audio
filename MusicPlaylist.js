@@ -752,6 +752,7 @@ else if(Sections[3].classList.contains("active")){type = "file";}
 attachSettingsHandler(item, { type, slideIndex: index + 1 });  });});
 
 empty();
+M.innerHTML = currentIndex;
 
 }
 
@@ -954,7 +955,7 @@ document.querySelector("#confirm-Delete").addEventListener("click", () => {
 
   load();
   document.querySelector("#DeleteDialog").classList.remove("active");
-M.innerHTML = currentIndex;
+
 });
 
 let SlideIndex = 1;
