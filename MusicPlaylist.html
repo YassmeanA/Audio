@@ -586,18 +586,7 @@ pointer-events:auto;}
 .Controls.active {
 top:0;}
 
-.Settings .content, .Controls .content {
-position:absolute;
-top:0;
-width:100vw;
-height:100%;
-overflow:hidden;
-display:flex;
-align-items:center;
-justify-content:center;}
-
-.Controls .content-container, .Settings .content-container {
- background:red;
+.Controls .content, .Settings .content {
 position:absolute;
 width:100%;
 height:670px;
@@ -605,6 +594,9 @@ display:flex;
 align-items:center;
 justify-content:center;}
 
+.Controls .content {
+height:600px;}
+ 
 .Controls .Cover {
 position:absolute;
 top:80px;
@@ -1835,9 +1827,7 @@ column-gap:210px;}
 
 <div id="Controls" class="Controls">
 
-
-
-<div class="content-container">
+<div class="content">
 
 <img class="Cover" src="">
 
@@ -1943,16 +1933,12 @@ column-gap:210px;}
 
 </div>
 
-
-
 </div>
 
 
 <div id="Settings" class="Settings">
 
-
-
-<div class="content-container">
+<div class="content">
 
 <div class="Background"></div>
 
@@ -2031,7 +2017,6 @@ column-gap:210px;}
 <button class="save">حفظ</button>
 
 </div>
-
 
 
 <div id="Back">
