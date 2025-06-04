@@ -288,6 +288,8 @@ if(document.querySelectorAll(".mask")[index].querySelector("span").offsetWidth >
 
 function activateItem(index) {
 
+M.innerHTM=index;
+  
   //Check FavouriteIcon
 if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("favourite")) {
     Favourite.classList.add("active");
