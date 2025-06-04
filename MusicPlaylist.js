@@ -287,7 +287,7 @@ if(document.querySelectorAll(".mask")[index].querySelector("span").offsetWidth >
 }
 
 function activateItem(index) {
-
+M.innerHTML = currentIndex;
   //Check FavouriteIcon
 if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("favourite")) {
     Favourite.classList.add("active");
@@ -752,7 +752,7 @@ else if(Sections[3].classList.contains("active")){type = "file";}
 attachSettingsHandler(item, { type, slideIndex: index + 1 });  });});
 
 empty();
-M.innerHTML = currentIndex;
+
 
 }
 
