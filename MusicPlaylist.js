@@ -378,11 +378,13 @@ function activateText(index) {
 
 function activateItem(index) {
 
+setTimeout(() => {
 // Show loader initially
 document.querySelector(".progress-loader").style.display="flex";
 document.querySelector(".progress-section").style.display="none";
 document.querySelector(".Controls .loading-container").style.opacity="1";
 
+},500);
   
 //Check FavouriteIcon
 if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("favourite")) {
