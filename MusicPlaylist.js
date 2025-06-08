@@ -1025,7 +1025,6 @@ function deleteSelected(slideIndex) {
   }
 
   cancelSelection(slideIndex);
- 
 
 }
 
@@ -1067,9 +1066,6 @@ document.querySelector("#DeleteDialog").classList.remove("active");
 // Handle Delete button
 document.querySelector("#confirm-Delete").addEventListener("click", () => {
 
-  [1, 2, 3, 4].forEach(deleteSelected);
-
-
 PrevNext();
 
   document.querySelectorAll(".listContainer.num1 .item").forEach((Item,index) => {
@@ -1077,6 +1073,8 @@ PrevNext();
     if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("selected") && document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("active")){Audio.src = null;};
   
   });
+
+  [1, 2, 3, 4].forEach(deleteSelected);
 
   isSelecting = false;
 
