@@ -257,7 +257,7 @@ function Resize() {
 
 for (let i = 0; i < document.querySelectorAll(".mask").length; i++) {
 
-if(document.querySelectorAll(".mask")[i].querySelector("span").offsetWidth >= 0.75*document.querySelectorAll(".mask")[0].offsetWidth){document.querySelectorAll(".mask")[i].querySelector("span").style.animation=`scroll-text ${document.querySelectorAll(".mask")[i].querySelector('span').offsetWidth / 30}s linear infinite`;}else{document.querySelectorAll(".mask")[i].querySelector("span").style.animation="none";document.querySelectorAll(".mask")[i].querySelector("span").style.transition="none";};
+if(document.querySelectorAll(".mask")[i].querySelector("span").offsetWidth >= 0.75*document.querySelectorAll(".mask")[0].offsetWidth){document.querySelectorAll(".mask")[i].querySelector("span").style.animation=`scroll-text ${document.querySelectorAll(".mask")[i].querySelector('span').offsetWidth / 30}s linear infinite`;}else{document.querySelectorAll(".mask")[i].querySelector("span").style.animation="none";document.querySelectorAll(".mask")[i].querySelector("span").style.transform="none";};
 
 }
 
