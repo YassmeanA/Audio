@@ -312,7 +312,7 @@ for (let i = 1; i <= 4; i++) {
 // Show loader initially
 document.querySelector(".progress-loader").style.display="flex";
 document.querySelector(".progress-section").style.display="none";
-document.querySelector(".Controls .loader").style.opacity="1";
+document.querySelector(".Controls .loading-container").style.opacity="1";
 
 
 let pendingCoverImage = null;
@@ -388,13 +388,13 @@ Audio.onloadedmetadata = () => {
     
   document.querySelector(".progress-loader").style.display="flex";
   document.querySelector(".progress-section").style.display="none";
-  document.querySelector(".Controls .loader").style.opacity="1"; 
+  document.querySelector(".Controls .loading-container").style.opacity="1"; 
     
   }else{
 
   document.querySelector(".progress-loader").style.display="none";
   document.querySelector(".progress-section").style.display="flex";
-  document.querySelector(".Controls .loader").style.opacity="0";
+  document.querySelector(".Controls .loading-container").style.opacity="0";
 
   }
 
