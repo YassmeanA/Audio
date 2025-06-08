@@ -374,9 +374,6 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
   activateText(index);
 
 
-  Audio.pause(); // Stop any current playback
-  Audio.src = audios[index]; // Set new source
-
 // When enough data is loaded to play, hide loader
   Audio.addEventListener('canplay', () => {
   document.querySelector(".progress-loader").style.display="none";
@@ -399,6 +396,9 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
   });
 
   
+  Audio.pause(); // Stop any current playback
+  Audio.src = audios[index]; // Set new source
+
 // Remove previous event listener if necessary to avoid stacking
 Audio.onloadedmetadata = () => {
   Audio.currentTime = Xs[index]; // Set the correct start time
