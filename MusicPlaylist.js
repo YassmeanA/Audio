@@ -1191,7 +1191,7 @@ Add.addEventListener("click", () => {
         Mask.className = "mask";
 
         Item.innerHTML = `
-          <img src="song1.jpg">
+          <img src="">
           <section class="title"><h3>New Song</h3><span>${file.name}</span></section>
           <div class="block"></div>
           <div class="settings">
@@ -1381,6 +1381,7 @@ InsertSave.addEventListener("click", () => {
     attachSettingsHandler(Item, currentInsertType);
     initializeItemEvents(Item);
     empty();
+    Resize();
   }
 
   InsertDialog.classList.remove("active");
