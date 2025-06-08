@@ -1275,33 +1275,17 @@ function attachSettingsHandler(item, insertType) {
     setTimeout(() => {
       newSettings.querySelector(".circle").classList.remove("active");
 
-      let labelText, errorText,type;
-      
-      if (Sections[1].classList.contains("active")) type = "singer";
-      else if (Sections[2].classList.contains("active")) type = "album";
-      else if (Sections[3].classList.contains("active")) type = "file";
-      
-
-
-if (insertType.type === "singer") {
-  labelText = "اسم الفنان";
-  errorText = "الرجاء إدخال اسم الفنان";
-} else if (insertType.type === "album") {
-  labelText = "اسم الألبوم";
-  errorText = "الرجاء إدخال اسم الألبوم";
-} else {
-  labelText = "اسم المجلد";
-  errorText = "الرجاء إدخال اسم المجلد";
-}
-
-openInsertDialog(
-  labelText,
-  errorText,
-  insertType.type,
-  insertType.slideIndex,
-  item
-);
-
+      openInsertDialog(
+        insertType.type === "singer" ? "اسم الفنان" :
+        insertType.type === "album" ? "اسم الألبوم" :
+        "اسم المجلد",
+        insertType.type === "singer" ? "الرجاء إدخال اسم الفنان" :
+        insertType.type === "album" ? "الرجاء إدخال اسم الألبوم" :
+        "الرجاء إدخال اسم المجلد",
+        insertType.type,
+        insertType.slideIndex,
+        item
+      );
 
       InsertDialog.querySelector(".wrapper").classList.add("active");
     }, 400);
@@ -1358,8 +1342,8 @@ InsertSave.addEventListener("click", () => {
     Item.className = "item";
 
     let imgSrc = {
-      singer: "Singer.jpg",
-      album: "Album.jpg",
+      singer: "Singer.svg",
+      album: "Album.svg",
       file: "File.svg"
     }[currentInsertType.type];
 
@@ -1383,11 +1367,10 @@ InsertSave.addEventListener("click", () => {
       </div>
     `;
 
-    document.querySelector(`.listContainer.num${currentInsertType.slideIndex} .list`).appendChild(Item);
+    document.querySelector(`.slide.num${currentInsertType.slideIndex} .list`).appendChild(Item);
     attachSettingsHandler(Item, currentInsertType);
     initializeItemEvents(Item);
     empty();
-    Resize();
   }
 
   InsertDialog.classList.remove("active");
