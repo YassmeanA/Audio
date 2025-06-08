@@ -309,11 +309,6 @@ for (let i = 1; i <= 4; i++) {
 }
 
 
-// Show loader initially
-document.querySelector(".progress-loader").style.display="flex";
-document.querySelector(".progress-section").style.display="none";
-document.querySelector(".Controls .loading-container").style.opacity="1";
-
 
 let pendingCoverImage = null;
 let activeSettingIndex = null;
@@ -384,21 +379,6 @@ Audio.onloadedmetadata = () => {
   Progress.value = Audio.currentTime / Audio.duration;
   calcValue();
 
-  if(!Audio){
-    
-  document.querySelector(".progress-loader").style.display="flex";
-  document.querySelector(".progress-section").style.display="none";
-  document.querySelector(".Controls .loading-container").style.opacity="1"; 
-    
-  }else{
-
-  document.querySelector(".progress-loader").style.display="none";
-  document.querySelector(".progress-section").style.display="flex";
-  document.querySelector(".Controls .loading-container").style.opacity="0";
-
-  }
-
-  
   // Now that metadata is loaded, attempt to play
   const playPromise = Audio.play();
   if (playPromise !== undefined) {
@@ -1415,4 +1395,33 @@ InsertCancel.addEventListener("click", () => {
   InsertDialog.classList.remove("active");
   wrapper.classList.remove("active");
 });
+
+
+
+
+// Show loader initially
+document.querySelector(".progress-loader").style.display="flex";
+document.querySelector(".progress-section").style.display="none";
+document.querySelector(".Controls .loading-container").style.opacity="1";
+
+// When enough data is loaded to play, hide loader
+  Audio.addEventListener('canplay', () => {
+  document.querySelector(".progress-loader").style.display="none";
+  document.querySelector(".progress-section").style.display="flex";
+  document.querySelector(".Controls .loading-container").style.opacity="0";
+  });
+
+  // If Audio starts buffering later, show loader again
+  Audio.addEventListener('waiting', () => {
+  document.querySelector(".progress-loader").style.display="flex";
+  document.querySelector(".progress-section").style.display="none";
+  document.querySelector(".Controls .loading-container").style.opacity="1";
+  });
+
+  // When Audio resumes playing, hide loader
+  Audio.addEventListener('playing', () => {
+  document.querySelector(".progress-loader").style.display="none";
+  document.querySelector(".progress-section").style.display="flex";
+  document.querySelector(".Controls .loading-container").style.opacity="0";
+  });
 
