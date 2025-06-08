@@ -1368,6 +1368,7 @@ InsertSave.addEventListener("click", () => {
     `;
 
     document.querySelector(`.slide:nth-child(${currentInsertType.slideIndex}) .list`).appendChild(Item);
+    Resize();
     attachSettingsHandler(Item, currentInsertType);
     initializeItemEvents(Item);
     empty();
