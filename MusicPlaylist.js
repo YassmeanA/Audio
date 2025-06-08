@@ -325,6 +325,28 @@ document.querySelector(".progress-loader").style.display="flex";
 document.querySelector(".progress-section").style.display="none";
 document.querySelector(".Controls .loading-container").style.opacity="1";
 
+// When enough data is loaded to play, hide loader
+  Audio.addEventListener('canplay', () => {
+  document.querySelector(".progress-loader").style.display="none";
+  document.querySelector(".progress-section").style.display="flex";
+  document.querySelector(".Controls .loading-container").style.opacity="0";
+  });
+
+  // If Audio starts buffering later, show loader again
+  Audio.addEventListener('waiting', () => {
+  document.querySelector(".progress-loader").style.display="flex";
+  document.querySelector(".progress-section").style.display="none";
+  document.querySelector(".Controls .loading-container").style.opacity="1";
+  });
+
+  // When Audio resumes playing, hide loader
+  Audio.addEventListener('playing', () => {
+  document.querySelector(".progress-loader").style.display="none";
+  document.querySelector(".progress-section").style.display="flex";
+  document.querySelector(".Controls .loading-container").style.opacity="0";
+  });
+
+
 function PrevNext() {
 
 if(document.querySelectorAll(".listContainer.num1 .item")[0].classList.contains("active")){Prev.style.opacity = "0.5";Prev.style.pointerEvents = "none";}else{Prev.style.opacity = "1";Prev.style.pointerEvents = "auto";};
@@ -356,8 +378,13 @@ function activateText(index) {
 
 function activateItem(index) {
 
+// Show loader initially
+document.querySelector(".progress-loader").style.display="flex";
+document.querySelector(".progress-section").style.display="none";
+document.querySelector(".Controls .loading-container").style.opacity="1";
+
   
-  //Check FavouriteIcon
+//Check FavouriteIcon
 if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("favourite")) {
     Favourite.classList.add("active");
   } else {
@@ -365,7 +392,6 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
   }
 
  
-
   // Update UI and audio playback
   document.querySelectorAll(".listContainer.num1 .item .PlayingNow").forEach(p => p.classList.remove("active"));
   document.querySelectorAll(".listContainer.num1 .item .PlayingNow")[index].classList.add("active");
@@ -373,29 +399,6 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
   document.querySelector(".ActiveItem").style.bottom = "1px";
   activateText(index);
 
-
-// When enough data is loaded to play, hide loader
-  Audio.addEventListener('canplay', () => {
-  document.querySelector(".progress-loader").style.display="none";
-  document.querySelector(".progress-section").style.display="flex";
-  document.querySelector(".Controls .loading-container").style.opacity="0";
-  });
-
-  // If Audio starts buffering later, show loader again
-  Audio.addEventListener('waiting', () => {
-  document.querySelector(".progress-loader").style.display="flex";
-  document.querySelector(".progress-section").style.display="none";
-  document.querySelector(".Controls .loading-container").style.opacity="1";
-  });
-
-  // When Audio resumes playing, hide loader
-  Audio.addEventListener('playing', () => {
-  document.querySelector(".progress-loader").style.display="none";
-  document.querySelector(".progress-section").style.display="flex";
-  document.querySelector(".Controls .loading-container").style.opacity="0";
-  });
-
-  
   Audio.pause(); // Stop any current playback
   Audio.src = audios[index]; // Set new source
 
