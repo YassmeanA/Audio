@@ -1140,19 +1140,7 @@ const handleEnd = () => {
     Item.classList.add("selected");
     Item.querySelector(".check").style.animation = "Scale 0.3s";
     count++;
-
-    document.querySelector(".delete-section").style.display = "flex";
-    document.querySelector(".delete-section span").innerHTML = `تم تحديد ${count} عناصر`;
-
-      Item.querySelector(".check").style.animation = "Scale 0.3s";
-
-      document.querySelectorAll(`.slide.num${SlideIndex} .item`).forEach(item => {
-        item.querySelector(".check").style.transition = "0.3s";
-        item.querySelector(".check").style.opacity = "1";
-        item.querySelector(".check").style.pointerEvents = "auto";
-        item.querySelector(".settings").style.display = "none";
-      });
-
+    updateDeleteUI(SlideIndex);
     
   }
 };
