@@ -42,7 +42,7 @@ let Titles = ["البؤساء", "دو ري مي", "الحديقة السرية",
 let Singers = ["رشا رزق", "رشا رزق", "هالة الصباغ", "هالة الصباغ"];
 let Albums = ["البؤساء", "دو ري مي", "الحديقة السرية", "أنا وأخي"];
 let titles = [];
-let audios = ["Remy.mp3", "Remy.mp3", "Remy.mp3", "Remy.mp3"];
+let audios = ["Song1.mp3", "Song2.mp3", "Song3.mp3", "Song4.mp3"];
 let Xs = ["X0", "X1", "X2", "X3"];
 
 
