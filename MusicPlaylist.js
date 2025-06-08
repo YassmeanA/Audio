@@ -384,35 +384,21 @@ Audio.onloadedmetadata = () => {
   Progress.value = Audio.currentTime / Audio.duration;
   calcValue();
 
-  
-// When enough data is loaded to play, hide loader
-Audio.addEventListener('canplay', () => {
-
-  document.querySelector(".progress-loader").style.display="none";
-  document.querySelector(".progress-section").style.display="flex";
-  document.querySelector(".Controls .loader").style.opacity="0";
-
-});
-
-// If video starts buffering later, show loader again
-Audio.addEventListener('waiting', () => {
-
+  if(Audio.src===null){
+    
   document.querySelector(".progress-loader").style.display="flex";
   document.querySelector(".progress-section").style.display="none";
-  document.querySelector(".Controls .loader").style.opacity="1";
-  
-});
-
-// When video resumes playing, hide loader
-Audio.addEventListener('playing', () => {
+  document.querySelector(".Controls .loader").style.opacity="1"; 
+    
+  }else{
 
   document.querySelector(".progress-loader").style.display="none";
   document.querySelector(".progress-section").style.display="flex";
   document.querySelector(".Controls .loader").style.opacity="0";
+
+  }
+
   
-});
-
-
   // Now that metadata is loaded, attempt to play
   const playPromise = Audio.play();
   if (playPromise !== undefined) {
