@@ -912,62 +912,57 @@ Cover.addEventListener("click", () => {
 // General setup function for slide groups
 function setupSlideGroup(slideIndex) {
 
-  document.querySelectorAll(`.slide:nth-child(${slideIndex}) .item`).forEach(item => {
+document.querySelectorAll(`.slide:nth-child(${slideIndex}) .item`).forEach(item => {
 
-    // Unified start event (mouse + touch)
-    const handleStart = () => {
-      touchStartTime = Date.now();
-    };
+let touchStartX = 0;
+let touchStartY = 0;
 
-    // Unified end event (mouse + touch)
-    const handleEnd = () => {
-      if(document.querySelector(".Controls-background").classList.contains("active")) return;
-      const duration = Date.now() - touchStartTime;
-      if (duration > 400) {
-        isSelecting = true;
-        if (Sections[0].classList.contains("active")) document.querySelector(".ActiveItem").style.bottom = "-100px";
-        Add.classList.add("delete");
-        item.classList.add("selected");
-        item.querySelector(".check").style.animation = "Scale 0.3s";
-        count++;
-        updateDeleteUI(slideIndex);
-      }
-    };
 
-    // Attach mouse events
-    item.addEventListener("mousedown", handleStart);
-    item.addEventListener("mouseup", handleEnd);
+// Start event
+const handleStart = (e) => {
+  const touch = e.touches ? e.touches[0] : e;
+  touchStartTime = Date.now();
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+  isScrolling = false;
+};
 
-    let touchStartTimer;
+// Move event – detect scroll by measuring move distance
+const handleMove = (e) => {
+  const touch = e.touches ? e.touches[0] : e;
+  const deltaX = Math.abs(touch.clientX - touchStartX);
+  const deltaY = Math.abs(touch.clientY - touchStartY);
 
-    // Start long press detection
-const handleStartTouch = () => {
-  touchStartTimer = setTimeout(() => {
+  if (deltaX > 10 || deltaY > 10) {
+    isScrolling = true;
+  }
+};
+
+// End event
+const handleEnd = () => {
+  if (isScrolling) return;
+
+  const duration = Date.now() - touchStartTime;
+  if (duration > 400) {
     isSelecting = true;
-    document.querySelector(".ActiveItem").style.bottom = "-100px";
+    if (Sections[0].classList.contains("active")) {
+      document.querySelector(".ActiveItem").style.bottom = "-100px";
+    }
+    Add.classList.add("delete");
     item.classList.add("selected");
+    item.querySelector(".check").style.animation = "Scale 0.3s";
+    count++;
+    updateDeleteUI(slideIndex);
+  }
+};
+
+// Event listeners
+item.addEventListener("touchstart", handleStart);
+item.addEventListener("mousedown", handleStart);
+item.addEventListener("touchmove", handleMove);
+item.addEventListener("touchend", handleEnd);
+item.addEventListener("mouseup", handleEnd);
     
-if (Sections[0].classList.contains("active")) document.querySelector(".ActiveItem").style.bottom = "-100px";
-        Add.classList.add("delete");
-        item.classList.add("selected");
-        item.querySelector(".check").style.animation = "Scale 0.3s";
-        count++;
-        updateDeleteUI(slideIndex);
-
-  }, 400); // 400ms long press threshold
-};
-
-// Cancel long press if user moves or lifts finger/mouse early
-const cancelLongPress = () => {
-  clearTimeout(touchStartTimer);
-};
-
-// Touch event listeners
-item.addEventListener("touchstart", handleStartTouch);
-item.addEventListener("touchmove", cancelLongPress);
-item.addEventListener("touchcancel", cancelLongPress);
-
-
     // Circle check click (toggle selection)
     item.querySelector(".check .circle").addEventListener("click", () => {
       if (!isSelecting) return;
