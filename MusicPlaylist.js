@@ -384,7 +384,7 @@ Audio.onloadedmetadata = () => {
   Progress.value = Audio.currentTime / Audio.duration;
   calcValue();
 
-  if(Audio.src===null){
+  if(!Audio){
     
   document.querySelector(".progress-loader").style.display="flex";
   document.querySelector(".progress-section").style.display="none";
@@ -1070,7 +1070,7 @@ PrevNext();
 
   document.querySelectorAll(".listContainer.num1 .item").forEach((Item,index) => {
 
-    if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("selected") && document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("active")){Audio.src = null;};
+    if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("selected") && document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("active")){Audio.src = "";};
   
   });
 
