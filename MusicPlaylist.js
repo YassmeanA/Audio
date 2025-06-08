@@ -751,9 +751,17 @@ Background.addEventListener("click", () => {  Wrappers.forEach((Wrapper) => Wrap
 
 
 //Initialize edit handlers for existing items on page load
-document.querySelectorAll(".listContainer.num2 .item").forEach((item, index) => {  
+const slideTypes = {
+  2: "singer",
+  3: "album",
+  4: "file"
+};
 
-attachSettingsHandler(item, {slideIndex: index + 1 }); });
+Object.entries(slideTypes).forEach(([num, type]) => {
+  document.querySelectorAll(`.slide.num${num} .item`).forEach((item, index) => {
+    attachSettingsHandler(item, { type, slideIndex: index + 1 });
+  });
+});
 
 empty();
 
