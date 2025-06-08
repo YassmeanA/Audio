@@ -756,13 +756,12 @@ const slideTypes = {
   3: "album",
   4: "file"
 };
-let type;
-//Object.entries(slideTypes).forEach(([num, type]) => {
-  document.querySelectorAll(".slide.num2 .item").forEach((item, index) => {
-    type = "singer";
+
+Object.entries(slideTypes).forEach(([num, type]) => {
+  document.querySelectorAll(`.slide.num${num} .item`).forEach((item, index) => {
     attachSettingsHandler(item, { type, slideIndex: index + 1 });
   });
-//});
+});
 
 empty();
 
