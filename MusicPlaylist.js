@@ -750,14 +750,17 @@ Wrappers.forEach((Wrapper) => {
 Background.addEventListener("click", () => {  Wrappers.forEach((Wrapper) => Wrapper.classList.remove("active"));});
 
 //Initialize edit handlers for existing items on page load
-document.querySelectorAll(".slide").forEach((slide, index) => {  
-slide.querySelectorAll(".slide.num2 .item, .slide.num3 .item, .slide.num4 .item").forEach((item) => {   
-let type;
-if(Sections[1].classList.contains("active")){type = "singer";}
-else if(Sections[2].classList.contains("active")){type = "album";}
-else if(Sections[3].classList.contains("active")){type = "file";}
+const slideTypes = {
+  2: "singer",
+  3: "album",
+  4: "file"
+};
 
-attachSettingsHandler(item, { type, slideIndex: index + 1 });  });});
+Object.entries(slideTypes).forEach(([num, type]) => {
+  document.querySelectorAll(`.slide:nth-child(${num}) .item`).forEach((item, index) => {
+    attachSettingsHandler(item, { type, slideIndex: index + 1 });
+  });
+});
 
 
 empty();
@@ -1364,7 +1367,7 @@ InsertSave.addEventListener("click", () => {
       </div>
     `;
 
-    document.querySelector(`.slide.num${currentInsertType.slideIndex} .list`).appendChild(Item);
+    document.querySelector(`.slide:nth-child(${currentInsertType.slideIndex}) .list`).appendChild(Item);
     attachSettingsHandler(Item, currentInsertType);
     initializeItemEvents(Item);
     empty();
@@ -1389,4 +1392,3 @@ InsertCancel.addEventListener("click", () => {
   InsertDialog.classList.remove("active");
   wrapper.classList.remove("active");
 });
-
