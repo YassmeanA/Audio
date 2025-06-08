@@ -1074,7 +1074,7 @@ PrevNext();
 
   document.querySelectorAll(".listContainer.num1 .item").forEach((Item,index) => {
 
-    if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("selected") && document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("active")){Audio.src = "";};
+    if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("selected") && document.querySelectorAll(".listContainer.num1 .item")[index].classList.contains("active")){Audio.src = null;};
   
   });
 
