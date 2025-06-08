@@ -749,19 +749,16 @@ Wrappers.forEach((Wrapper) => {
 
 Background.addEventListener("click", () => {  Wrappers.forEach((Wrapper) => Wrapper.classList.remove("active"));});
 
-
 //Initialize edit handlers for existing items on page load
-const slideTypes = {
-  2: "singer",
-  3: "album",
-  4: "file"
-};
+document.querySelectorAll(".slide").forEach((slide, index) => {  
+slide.querySelectorAll(".slide.num2 .item, .slide.num3 .item, .slide.num4 .item").forEach((item) => {   
+let type;
+if(Sections[1].classList.contains("active")){type = "singer";}
+else if(Sections[2].classList.contains("active")){type = "album";}
+else if(Sections[3].classList.contains("active")){type = "file";}
 
-Object.entries(slideTypes).forEach(([num, type]) => {
-  document.querySelectorAll(`.slide.num${num} .item`).forEach((item, index) => {
-    attachSettingsHandler(item, { type, slideIndex: index + 1 });
-  });
-});
+attachSettingsHandler(item, { type, slideIndex: index + 1 });  });});
+
 
 empty();
 
