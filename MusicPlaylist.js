@@ -320,6 +320,10 @@ let isSelecting = false;
 let isScrolling = false;
 let count = 0;
 
+// Show loader initially
+document.querySelector(".progress-loader").style.display="flex";
+document.querySelector(".progress-section").style.display="none";
+document.querySelector(".Controls .loading-container").style.opacity="1";
 
 function PrevNext() {
 
@@ -371,8 +375,30 @@ if (document.querySelectorAll(".listContainer.num1 .item")[index].classList.cont
 
 
   Audio.pause(); // Stop any current playback
-Audio.src = audios[index]; // Set new source
+  Audio.src = audios[index]; // Set new source
 
+// When enough data is loaded to play, hide loader
+  Audio.addEventListener('canplay', () => {
+  document.querySelector(".progress-loader").style.display="none";
+  document.querySelector(".progress-section").style.display="flex";
+  document.querySelector(".Controls .loading-container").style.opacity="0";
+  });
+
+  // If Audio starts buffering later, show loader again
+  Audio.addEventListener('waiting', () => {
+  document.querySelector(".progress-loader").style.display="flex";
+  document.querySelector(".progress-section").style.display="none";
+  document.querySelector(".Controls .loading-container").style.opacity="1";
+  });
+
+  // When Audio resumes playing, hide loader
+  Audio.addEventListener('playing', () => {
+  document.querySelector(".progress-loader").style.display="none";
+  document.querySelector(".progress-section").style.display="flex";
+  document.querySelector(".Controls .loading-container").style.opacity="0";
+  });
+
+  
 // Remove previous event listener if necessary to avoid stacking
 Audio.onloadedmetadata = () => {
   Audio.currentTime = Xs[index]; // Set the correct start time
@@ -1395,33 +1421,4 @@ InsertCancel.addEventListener("click", () => {
   InsertDialog.classList.remove("active");
   wrapper.classList.remove("active");
 });
-
-
-
-
-// Show loader initially
-document.querySelector(".progress-loader").style.display="flex";
-document.querySelector(".progress-section").style.display="none";
-document.querySelector(".Controls .loading-container").style.opacity="1";
-
-// When enough data is loaded to play, hide loader
-  Audio.addEventListener('canplay', () => {
-  document.querySelector(".progress-loader").style.display="none";
-  document.querySelector(".progress-section").style.display="flex";
-  document.querySelector(".Controls .loading-container").style.opacity="0";
-  });
-
-  // If Audio starts buffering later, show loader again
-  Audio.addEventListener('waiting', () => {
-  document.querySelector(".progress-loader").style.display="flex";
-  document.querySelector(".progress-section").style.display="none";
-  document.querySelector(".Controls .loading-container").style.opacity="1";
-  });
-
-  // When Audio resumes playing, hide loader
-  Audio.addEventListener('playing', () => {
-  document.querySelector(".progress-loader").style.display="none";
-  document.querySelector(".progress-section").style.display="flex";
-  document.querySelector(".Controls .loading-container").style.opacity="0";
-  });
 
