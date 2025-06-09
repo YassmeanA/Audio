@@ -1342,8 +1342,8 @@ InsertSave.addEventListener("click", () => {
     Item.className = "item";
 
     let imgSrc = {
-      singer: "Singer.jpg",
-      album: "Album.jpg",
+      singer: "Singer.svg",
+      album: "Album.svg",
       file: "File.svg"
     }[currentInsertType.type];
 
