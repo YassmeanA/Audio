@@ -1429,7 +1429,7 @@ InsertSave.addEventListener("click", () => {
 
     let imgSrc = {
       singer: "Singer.jpg",
-      album: "Album.jpg",
+      album: "Album.svg",
       file: "File.svg"
     }[currentInsertType.type];
 
