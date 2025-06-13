@@ -1460,7 +1460,7 @@ else if(Sections[2].classList.contains("active")) {
     
     <h3>${name}</h3>
     <div class="block"></div>
-    <div class="disk"><img src="${imgSrc}"></div>
+    <div class="disk"><img src="" onerror="this.style.display='none';"></div>
     <div class="settings">
       <div class="circle"></div>
       <svg style="position:absolute;" width="40" height="40" viewBox="0 0 40 40" fill="none">
