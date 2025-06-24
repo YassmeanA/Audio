@@ -609,6 +609,7 @@ const confirmDialog = document.querySelector("#confirmDialog");
 const confirmSaveBtn = document.querySelector("#confirmSave");
 const confirmCancelBtn = document.querySelector("#confirmCancel");
 const coverInput = document.querySelector("#coverInput");
+const SingerInput = document.querySelector("#SingerInput");
 
 settings.addEventListener("click", () => {
   settings.querySelector(".circle").classList.add("active");
