@@ -46,6 +46,29 @@ let audios = ["Song1.mp3", "Song2.mp3", "Song3.mp3", "Song4.mp3"];
 let Xs = ["X0", "X1", "X2", "X3"];
 
 
+//Remove loading animation after the page is full loaded
+let loaded = 0;
+const total = document.querySelectorAll(".item").length;
+
+document.querySelectorAll(".item").forEach(Item => {
+  const onLoad = () => {
+    loaded++;
+    if (loaded === total) {setTimeout(() => {document.querySelector(".Loader").remove();},500);};
+  };
+
+  if ((Item.tagName === "IMG" && Item.complete) ||
+      (Item.tagName === "VIDEO" && Item.readyState >= 3)) {
+    onLoad(); // Already loaded
+  } else {
+    if (Item.tagName === "VIDEO") {
+      Item.addEventListener("loadeddata", onLoad);
+    } else {
+      Item.addEventListener("load", onLoad);
+    }
+  }
+});
+
+
 if ("ontouchstart" in document.documentElement) {document.body.classList.add("touch");document.body.classList.remove("mouse");}else{document.body.classList.add("mouse");document.body.classList.remove("touch");};
 
 
