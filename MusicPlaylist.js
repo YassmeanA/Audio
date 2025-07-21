@@ -47,8 +47,11 @@ let Xs = ["X0", "X1", "X2", "X3"];
 
 
 //Remove loading animation after the page is fully loaded
-window.addEventListener("loadedmetadata",() => {
-setTimeout(() => {document.querySelector(".Loader").remove();},500);});
+window.addEventListener('load', () => {
+  const loader = document.querySelector('.loader');
+  if (loader) loader.style.display = 'none';
+  if (Body) Body.style.display = ''; // show content
+});
 
 if ("ontouchstart" in document.documentElement) {document.body.classList.add("touch");document.body.classList.remove("mouse");}else{document.body.classList.add("mouse");document.body.classList.remove("touch");};
 
