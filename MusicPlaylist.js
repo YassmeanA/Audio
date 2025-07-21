@@ -45,10 +45,11 @@ let titles = [];
 let audios = ["Song1.mp3", "Song2.mp3", "Song3.mp3", "Song4.mp3"];
 let Xs = ["X0", "X1", "X2", "X3"];
 
+setTimeout(() => {Pages[0].style.display = 'flex';},1000);
 
 //Remove loading animation after the page is fully loaded
 window.addEventListener('load', () => {
-document.querySelector('.Loader').style.display = 'none';
+setTimeout(() => {document.querySelector('.Loader').style.display = 'none';},1000);
 });
 
 if ("ontouchstart" in document.documentElement) {document.body.classList.add("touch");document.body.classList.remove("mouse");}else{document.body.classList.add("mouse");document.body.classList.remove("touch");};
