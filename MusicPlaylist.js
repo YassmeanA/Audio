@@ -45,7 +45,7 @@ let titles = [];
 let audios = ["Song1.mp3", "Song2.mp3", "Song3.mp3", "Song4.mp3"];
 let Xs = ["X0", "X1", "X2", "X3"];
 
-setTimeout(() => {Pages[0].style.display = 'flex';},1000);
+setTimeout(() => {Pages[0].style.opacity = '1';},1000);
 
 //Remove loading animation after the page is fully loaded
 window.addEventListener('load', () => {
