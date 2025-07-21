@@ -47,7 +47,7 @@ let Xs = ["X0", "X1", "X2", "X3"];
 
 
 //Remove loading animation after the page is fully loaded
-window.addEventListener("load",() => {
+Pages[0].addEventListener("loadedmetadata",() => {
 setTimeout(() => {document.querySelector(".Loader").remove();},500);});
 
 if ("ontouchstart" in document.documentElement) {document.body.classList.add("touch");document.body.classList.remove("mouse");}else{document.body.classList.add("mouse");document.body.classList.remove("touch");};
