@@ -1445,7 +1445,7 @@ InsertSave.addEventListener("click", () => {
     Item.innerHTML = `
       <h3>${name}</h3>
       <div class="block"></div>
-      <img src="${imgSrc}">
+      <img src="${imgSrc}" style="pointer-events:auto;" draggable="false">
       <div class="settings">
         <div class="circle"></div>
         <svg style="position:absolute;" width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -1511,3 +1511,4 @@ InsertCancel.addEventListener("click", () => {
   InsertDialog.classList.remove("active");
   wrapper.classList.remove("active");
 });
+
