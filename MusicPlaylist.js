@@ -1,3 +1,4 @@
+const Body = document.querySelector(".Body");
 const Icons = document.querySelectorAll(".icons .icon");
 const Pages = document.querySelectorAll(".page");
 const Container = document.querySelector(".sections");
@@ -1511,5 +1512,6 @@ InsertCancel.addEventListener("click", () => {
   InsertDialog.classList.remove("active");
   wrapper.classList.remove("active");
 });
+
 
 
