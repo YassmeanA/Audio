@@ -932,7 +932,6 @@ coverInput.addEventListener("change", (e) => {
 
 // Trigger file input when user clicks the cover
 Cover.addEventListener("click", () => {
-  Cover.style.opacity="0";
   coverInput.value = ""; // Reset so re-selecting the same image works
   coverInput.click();
 });
@@ -1513,6 +1512,7 @@ InsertCancel.addEventListener("click", () => {
   InsertDialog.classList.remove("active");
   wrapper.classList.remove("active");
 });
+
 
 
 
