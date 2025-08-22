@@ -60,7 +60,8 @@ width:100vw;
 height:100vh;
 align-items:center;
 justify-content:center;
-overflow-x:hidden;}
+overflow-x:hidden;
+opacity:0;}
 
 .page {
 top:0;
@@ -102,6 +103,7 @@ height:50px;
 display:flex;
 align-items:center;
 justify-content:center;
+pointer-events:auto;
 cursor:pointer;}
 
 .icon span {
@@ -115,6 +117,9 @@ transition:0.3s;}
 transition:0.3s;
 stroke:#A3A3A3;}
 
+.icon.active {
+pointer-events:none;}
+ 
 .icon.active span {
 color:#8307BD;}
 
@@ -859,6 +864,9 @@ background:none;
 transition:0.3s;
 cursor:pointer;}
 
+#favourites {
+transition:all 0.3s, left 0s;}
+
 #Back:active, #back:active, #favourites:active, .Add:active {
 transform:scale(0.8);}
 
@@ -1373,7 +1381,7 @@ width:40vw;}
 
 <div class="Body">
 
-<div class="page active" style="opacity:0;">
+<div class="page active">
 
 <section id="Search">
 <input class="input" type="text" placeholder="ابحث عن أغاني" id="search">
