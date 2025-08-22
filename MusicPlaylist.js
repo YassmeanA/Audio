@@ -49,7 +49,7 @@ setTimeout(() => {Pages[0].style.opacity = '1';},1000);
 
 //Remove loading animation after the page is fully loaded
 window.addEventListener('load', () => {
-setTimeout(() => {document.querySelector('.Loader').style.display = 'none';},1000);
+setTimeout(() => {document.querySelector('.Loader').style.display = 'none';Body.style.opacity = '1';},1000);
 });
 
 if ("ontouchstart" in document.documentElement) {document.body.classList.add("touch");document.body.classList.remove("mouse");}else{document.body.classList.add("mouse");document.body.classList.remove("touch");};
@@ -1511,4 +1511,5 @@ InsertCancel.addEventListener("click", () => {
   InsertDialog.classList.remove("active");
   wrapper.classList.remove("active");
 });
+
 
